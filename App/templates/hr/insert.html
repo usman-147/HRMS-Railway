@@ -1,0 +1,102 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<title>Insert Data</title>
+<style>
+  body {
+    background-color: rgb(22, 22, 71);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .navbar {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+  }
+
+  .navbar h1 {
+    font-size: 2.6rem;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .td {
+    font-size: 21px;
+  }
+
+  input {
+    margin: 10px 15px;
+    width: 550px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    border-radius: 13px;
+  }
+
+  button {
+    padding: 8px 13px;
+    margin: 7px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 12px;
+  }
+
+  button:hover {
+    transform: scale(1.15);
+  }
+
+  #sub {
+    background-color: green;
+  }
+
+  #reset {
+    background-color: rgb(168, 168, 232);
+  }
+</style>
+{% endblock head %} {% block start %}
+<nav class="navbar">
+  <h1>Insert Data</h1>
+</nav>
+
+<div class="container">
+  <form action="hr-insert" method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td class="td">Enter the Name of Faculty:</td>
+        <td><input type="name" name="ins_name" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Experience :</td>
+        <td><input type="number" name="ins_exe" /></td>
+      </tr>
+
+      <tr>
+        <td class="td">Enter the Joined date:</td>
+        <td><input type="date" name="joined" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Department Name:</td>
+        <td><input type="text" name="dep" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Salary:</td>
+        <td><input type="number" name="ins_salary" /></td>
+      </tr>
+    </table>
+    <button type="submit" id="sub">Submit</button>
+    <button type="reset" id="reset">Reset</button>
+  </form>
+</div>
+{% endblock start %}
