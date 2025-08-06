@@ -1,0 +1,145 @@
+<table>
+  <tr>
+    <td class="td">Enter the Faculty:</td>
+    <td>
+      <input type="name" name="ins_name" value="{{m2.instructor_name}}" />
+    </td>
+  </tr>
+  <tr>
+    <td class="td">Enter the Experience:</td>
+    <td><input type="number" name="ins_exe" value="{{m2.experience}}" /></td>
+  </tr>
+  <tr>
+    <td class="td">Enter the Salary:</td>
+    <td><input type="number" name="ins_salary" value="{{m2.salary}}" /></td>
+  </tr>
+  <tr>
+    <td class="td">Enter the Department Name:</td>
+    <td><input type="text" name="d_name" value="{{m1.name}}" /></td>
+  </tr>
+</table>
+
+<div class="top">
+  <a href="javascript:void(0);" class="logo">HR Management System</a>
+</div>
+
+<li class="login">
+  <a href="javascript:void(0);">Login</a>
+  <div class="login-dropdown">
+    <a href="/login" class="drop-a">HR Login</a>
+    <a href="/depdisplay" class="drop-a">Authority</a>
+  </div>
+</li>
+
+<div class="container">
+  <h1>LOGIN</h1>
+  <form>
+    <div class="box">
+      <input type="text" id="user" placeholder="Enter your User name:" />
+    </div>
+    <div class="box">
+      <input type="password" id="pass" placeholder="Enter your password:" />
+    </div>
+    <button type="button" id="btn">Login</button>
+  </form>
+</div>
+
+<script>
+  let user = document.getElementById("user");
+  let pass = document.getElementById("pass");
+  let btn = document.getElementById("btn");
+
+  btn.addEventListener("click", () => {
+    if (user.value === "usman" && pass.value === "12345") {
+      window.location.href = "/display";
+    } else {
+      alert("Please enter the correct user name and password");
+    }
+  });
+</script>
+
+<!-- .top {
+  height: 45px;
+  line-height: 45px;
+}
+
+.top a {
+  margin-left: 100px;
+} -->
+
+<!-- drop-a {
+  color: #fff;
+}
+
+.login {
+  position: relative;
+}
+
+.login-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(241, 208, 208);
+  color: #333;
+  padding: 8px 0;
+  display: none;
+  width: 200px;
+  box-shadow: 1px 1px 10px grey;
+}
+
+.login:hover .login-dropdown {
+  color: #fff;
+  display: block;
+}
+
+.login-dropdown a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.login-dropdown a:hover {
+  background-color: #ce9898;
+  text-decoration: none;
+} -->
+
+<!-- .auth-form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  .auth-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .auth-form-container button {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .auth-form-container button:hover {
+    opacity: 0.8;
+  }  -->
