@@ -1,0 +1,47 @@
+# Virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migrations (keep __init__.py so app migrations still track)
+App/migrations/*.py[cod]
+App/migrations/__pycache__/
+
+Project/__pycache__/
+
+# Environment variables
+.env
+
+# SQLite database (DEV only)
+db.sqlite3
+
+# Collected static files (will be generated on deploy)
+staticfiles/
+
+# Logs
+*.log
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# macOS Finder
+.AppleDouble
+.LSOverride
+
+# node modules (if you ever add JS deps)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Python dependency file
+pip-wheel-metadata/
