@@ -1,0 +1,150 @@
+{% extends "base.html" %} {% load static %} {% block head%}
+<title>Authority Display</title>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar{
+        height:70px;
+        width: 100%;
+        line-height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 100px 0px 50px;
+        margin-bottom: 30px;
+    }
+
+    .navbar h1{
+        margin: 0;
+        font-size: 2.5rem;
+        color: greenyellow;
+    }
+
+    .container{
+        display: flex;
+    }
+
+    table th, td{
+        padding:10px;
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    th{
+        color: black;
+        background-color: aqua;
+    }
+
+    td:hover{
+        transform: scale(1.1);
+        color: yellow;
+        cursor: pointer;
+    }
+
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        text-align: center;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-buttons a button {
+        width:100px;
+        padding:9px 0px;
+        font-weight: bold;
+        border-radius: 13px;
+        border:none;
+    }
+
+    .nav-buttons a button:hover{
+        opacity: 0.5;
+        transform: scale(1.15);
+        cursor: pointer;
+    }
+
+    #edit{
+        background-color: green;
+        color: white;
+    }
+
+    #del{
+        background-color: red;
+        color: white;
+    }
+
+    tr:nth-child(even){
+        background-color: rgb(40, 59, 59);
+    }
+
+    #fisrt{
+        border-radius: 25px;
+    }
+</style>
+{%  endblock head %} {% block start %}
+<nav class="navbar">
+    <h1>Authority Dashboard</h1>
+    <div class="nav-buttons">
+    <a href="authority-status"><button id = "insert">Update Status</button></a>
+    <a href="{% url 'create-hr' %}"><button id="insert">Create HR</button></a>
+    </div>
+</nav>
+
+<div class="container">    
+<table>
+    <tr id = "fisrt">
+        <th>Sl. No</th>
+        <th>Faculty Name</th>
+        <th>Faculty Id</th>
+        <th>Experience</th>
+        <th>Salary</th>
+        <th>Status</th>
+    </tr>
+    {%  for i in m2  %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.instructor_name}}</td>
+        <td>{{i.id}}</td>
+        <td>{{i.experience}}</td>
+        <td>{{i.salary}}</td>
+        <td
+        <td {%  if i.status == "approved"  %}
+                style="color: greenyellow;"
+            {%  elif i.status == "rejected"  %}
+                style="color: red;"
+            {%  else  %}
+                style="color: white;"
+            {%  endif  %}
+        >{{i.status}}
+        </td>
+    </tr>
+    {%  endfor  %}
+</table>
+<table >
+    <tr>
+        <th>Joined Date</th>
+        <th>Department</th>
+        <th>Document Submitted</th>
+        <!-- <th>Edit</th>
+        <th>Delete</th> -->
+    </tr>
+    {%  for i in m1 %}
+    <tr>
+        <td>{{i.joined_data}}</td>
+        <td>{{i.department}}</td>
+        <td>YES</td>
+        <!-- <td><a href="/faculty-edit/{{i.id}}"><button id = "edit">Edit</button></a></td>
+        <td><a href="/faculty-delete/{{i.id}}"><button id = "del">Delete</button></a></td> -->
+    </tr>
+    {%  endfor %}
+</div>
+{% endblock start %}
