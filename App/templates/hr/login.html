@@ -1,0 +1,102 @@
+{% extends "base.html" %} {% block start %}
+<title>HR Login</title>
+
+<div class="container">
+  <h1>HR Login</h1>
+
+  {% if error %}
+  <div class="error-message">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="{% url 'hr-login' %}">
+    {% csrf_token %}
+    <div class="box">
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+    </div>
+    <div class="box">
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+<style>
+  body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: aliceblue;
+  }
+
+  .container {
+    width: 450px;
+    height: 350px;
+    padding: 10px;
+    border: 4px solid aqua;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 10px 10px 100px rgb(167, 240, 160), 10px 10px 200px aqua;
+  }
+
+  .box {
+    margin: 25px 0px;
+  }
+
+  input {
+    width: 300px;
+    height: 35px;
+    padding: 0px 10px;
+    border: none;
+    border-bottom: 2px solid rgb(181, 205, 250);
+    background: none;
+    transition: all 1s ease-in-out;
+    color: aqua;
+  }
+
+  input:focus {
+    background-color: rgb(181, 205, 250);
+    border-radius: 12px;
+    color: black;
+    outline: none;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: greenyellow;
+  }
+
+  button {
+    width: 100px;
+    height: 35px;
+    background-color: aqua;
+    color: black;
+    font-weight: bold;
+    border-radius: 16px;
+  }
+
+  .error-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #ffe6e6;
+    color: #a12d2d;
+    border: 1px solid #a12d2d;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
+{% endblock %}
