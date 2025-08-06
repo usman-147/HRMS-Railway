@@ -1,0 +1,164 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<title>HR Display</title>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar{
+        height:50px;
+        width: 100%;
+        line-height: 70px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 100px 0px 50px;
+        margin-bottom: 30px;
+    }
+
+    .navbar h1{
+        font-size: 2.2rem;
+        color: greenyellow;
+    }
+
+    .container{
+        display: flex;
+    }
+
+    table th, td{
+        padding:10px;
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    th{
+        color: black;
+        background-color: aqua;
+    }
+
+    td:hover{
+        transform: scale(1.1);
+        color: yellow;
+        cursor: pointer;
+    }
+
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        text-align: center;
+    }
+
+    button{
+        width:90px;
+        padding:9px 0px;
+        font-weight: bold;
+        border-radius: 13px;
+        border:none;
+        font-size: 11px;
+    }
+
+    button:hover{
+        background-color: aqua;
+        color: black;
+        cursor: pointer;
+    }
+
+    input{
+        padding:7px 10px;
+        border-radius: 14px;
+        font-weight: bold;
+        color:black;
+        outline: none;
+        border:1px solid rgb(148, 142, 142);
+        background-color: aliceblue;
+    }
+
+    span{
+        margin:20px;
+        position: relative;
+        right: 402px;
+    }
+
+    #edit{
+        background-color: green;
+        color: white;
+    }
+
+    #del{
+        background-color: red;
+        color: white;
+    }
+
+    #search{
+    background-color: #b5e1f3;
+    color: black;
+    }
+    
+    tr:nth-child(even){
+        background-color: rgb(40, 59, 59);
+    }
+</style>
+{%  endblock head %} {% block start %}
+<nav class="navbar">
+    <h1>HR Dashboard</h1>
+    <a href="/hr-insert"><button id = "insert">Insert data</button></a>
+</nav>
+
+<span>
+    <form action="/search" method="POST">
+        {%  csrf_token  %}
+        <input type="search" name="search" placeholder="Enter the faculty id:">
+        <button type = "submit" id = "search">Search</button>
+    </form>
+</span>
+
+<div class="container">
+<table>
+    <tr>
+        <th>Sl. No</th>
+        <th>Faculty Name</th>
+        <th>Faculty id</th>
+        <th>Experience</th>
+        <th>Salary</th>
+        <th>Status</th>
+    </tr>
+    {%  for i in m2  %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.instructor_name}}</td>
+        <td>{{i.id}}</td>
+        <td>{{i.experience}}</td>
+        <td>{{i.salary}}</td>
+        <td {%  if i.status == "approved"  %}
+                style="color: greenyellow;"
+            {%  elif i.status == "rejected"  %}
+                style="color: red;"
+            {%  else  %}
+                style="color: white;"
+            {%  endif  %}
+        >{{i.status}}</td>
+    </tr>
+    {%  endfor  %}
+</table>
+<table >
+    <tr>
+        <th>Joined date</th>
+        <th>Department</th>
+        <th>Document Submitted</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {%  for i in m1 %}
+    <tr>
+        <td>{{i.joined_data}}</td>
+        <td>{{i.department}}</td>
+        <td>YES</td>
+        <td><a href="/edit/{{i.id}}"><button id = "edit">Edit</button></a></td>
+        <td><a href="/delete/{{i.id}}"><button id = "del">Delete</button></a></td>
+    </tr>
+    {%  endfor %}
+</div>
+{% endblock start %}
