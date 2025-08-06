@@ -36,7 +36,7 @@ else:
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hr-management-system.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = ['HTTPS://hr-management-system.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://hr-management-system.up.railway.app']
 
 # Application definition
 
