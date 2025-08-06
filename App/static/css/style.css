@@ -22,18 +22,15 @@ body {
   border-radius: 23px;
 }
 
-.home-page .nav-home-page {
+.home-page .nav-home-page .navbar {
   background-color: #f5e7e7;
   color: #333;
+  padding: 10px 0;
   position: sticky;
   top: 0;
-  z-index: 1;
-}
-
-.home-page .nav-home-page .navbar {
-  padding: 10px 0;
   height: 65px;
   line-height: 45px;
+  z-index: 1;
 }
 
 .home-page .container {
