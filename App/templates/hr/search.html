@@ -1,0 +1,132 @@
+{%  extends "base.html"  %} {%  block start  %}
+<title>Search Results</title>
+
+<nav class="navbar">
+    <h1>Search Results</h1>
+</nav>
+
+<div class="container">
+<table>
+    <tr id = "fisrt">
+        <!-- <th>SLNO</th> -->
+        <th>Faculty Name</th>
+        <th>Faculty Id</th>
+        <th>Experience</th>
+        <th>Salary</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <!-- <td>{{m1.id}}</td> -->
+        <td>{{m1.instructor_name}}</td>
+        <td>{{m1.id}}</td>
+        <td>{{m1.experience}}</td>
+        <td>{{m1.salary}}</td>
+        <td
+        <td {%  if m1.status == "approved"  %}
+                style="color: greenyellow;"
+            {%  elif m1.status == "rejected"  %}
+                style="color: red;"
+            {%  else  %}
+                style="color: white;"
+            {%  endif  %}
+        >{{m1.status}}
+        </td>
+    </tr>
+</table>
+<table >
+    <tr>
+        <th>Joined Date</th>
+        <th>Department</th>
+        <th>Document Submitted</th>
+    </tr>
+    <tr>
+        <td>{{m2.joined_data}}</td>
+        <td>{{m2.department}}</td>
+        <td>Yes</td>
+    </tr>
+</div>
+
+<style>
+    body{
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar{
+        height:70px;
+        width: 100%;
+        line-height: 70px;
+        display: flex;
+        justify-content: center;
+        padding: 0px 100px 0px 50px;
+        margin-bottom: 30px;
+    }
+
+    .navbar h1{
+        font-size: 2.5rem;
+        color: greenyellow;
+    }
+
+    .container{
+        display: flex;
+    }
+
+    table th, td{
+        padding:10px;
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    th{
+        color: black;
+        background-color: aqua;
+    }
+
+    td:hover{
+        transform: scale(1.1);
+        color: yellow;
+        cursor: pointer;
+    }
+
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        text-align: center;
+    }
+
+    button{
+        width:100px;
+        padding:9px 0px;
+        font-weight: bold;
+        border-radius: 13px;
+        border:none;
+    }
+
+    button:hover{
+        opacity: 0.5;
+        transform: scale(1.15);
+        cursor: pointer;
+    }
+
+    #edit{
+        background-color: green;
+        color: white;
+    }
+
+    #del{
+        background-color: red;
+        color: white;
+    }
+
+    tr:nth-child(even){
+        background-color: rgb(40, 59, 59);
+    }
+
+    #fisrt{
+        border-radius: 25px;
+    }
+</style>
+{%  endblock  %}
