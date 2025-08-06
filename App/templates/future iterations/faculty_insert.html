@@ -1,0 +1,102 @@
+{% extends "base.html" %} {% block start %}
+<title>Faculty Insert</title>
+
+<nav class="navbar">
+  <h1>Insert Data</h1>
+</nav>
+
+<div class="container">
+  <form action="/faculty-insert" method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td class="td">Enter the Department Name:</td>
+        <td><input type="text" name="d_name" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Department no:</td>
+        <td><input type="number" name="d_no" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Activity Name:</td>
+        <td><input type="name" name="act_name" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the Activity duration:</td>
+        <td><input type="number" name="act_duration" /></td>
+      </tr>
+      <tr>
+        <td class="td">Enter the bonus:</td>
+        <td><input type="number" name="bonus" /></td>
+      </tr>
+    </table>
+    <button type="submit" id="sub">Submit</button>
+    <button type="reset" id="reset">Reset</button>
+  </form>
+</div>
+
+<style>
+  body {
+    background-color: rgb(22, 22, 71);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .navbar {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+  }
+
+  .navbar h1 {
+    font-size: 2.6rem;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .td {
+    font-size: 21px;
+  }
+
+  input {
+    margin: 10px 15px;
+    width: 550px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    border-radius: 13px;
+  }
+
+  button {
+    padding: 8px 13px;
+    margin: 7px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 12px;
+  }
+
+  button:hover {
+    transform: scale(1.15);
+  }
+
+  #sub {
+    background-color: green;
+  }
+
+  #reset {
+    background-color: rgb(168, 168, 232);
+  }
+</style>
+{% endblock %}
