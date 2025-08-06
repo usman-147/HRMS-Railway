@@ -15,12 +15,11 @@ import dj_database_url
 
 from environ import Env
 env=Env()
-BASE_DIR = Path(__file__).resolve().parent.parent
-Env.read_env(BASE_DIR / "Project" / ".env")
+Env.read_env()
 ENVIRONMENT = env('ENVIRONMENT', default='production')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -94,8 +93,8 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = env.bool("POSTGRES_LOCALLY", default=False)
-if ENVIRONMENT == "production" or POSTGRES_LOCALLY:
+POSTGRES_LOCALLY = False
+if ENVIRONMENT == "production" or POSTGRES_LOCALLY == True:
     DATABASES["default"] = dj_database_url.parse(env("DATABASE_URL"))
 
 # Password validation
