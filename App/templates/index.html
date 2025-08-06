@@ -1,0 +1,134 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<title>HR Management System</title>
+{% endblock head %} {% block start %}
+<section id="home" class="home-page">
+  <section class="nav-home-page">
+    <nav class="navbar">
+      <div class="container">
+        <a href="." class="logo">HR Management System</a>
+        <ul class="nav-links">
+          <li><a href=".">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <section id="about" class="hero-home-page">
+    <div class="left"></div>
+
+    <div class="right">
+      <h1 class="hero-heading"><span>HR</span>Management System</h1>
+      <div class="class-wrap">
+        <p>
+          The University HR Management System is a Django-powered web app where
+          authorities can self-register, authenticate, and onboard HR users
+          through a secure form workflow. Once logged in, HR personnel manage
+          faculty records—adding new instructors with join dates, departments,
+          experience, and salaries; editing or deleting entries; and performing
+          targeted searches by ID. The authority role oversees and updates
+          faculty status (approved, rejected, pending) without exposing public
+          endpoints, while automated database migrations and structured models
+          (`Authority`, `HRUser`, `HR`, `Instructor`) ensure data integrity.
+          With CSRF-protected forms, email-based login, role-guarded views, and
+          clear URL routing for registration, login, status updates, and CRUD
+          operations, this system delivers a robust, end-to-end solution
+          tailored to university HR workflows.
+        </p>
+      </div>
+      <div class="hero-btn-container">
+        <a href="/authority-register" class="hero-btn"
+          >Authority Registration</a
+        >
+        <a href="/authority-login" class="hero-btn">Authority Login</a>
+        <a href="/hr-login" class="hero-btn">HR Login</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="cards">
+    <div class="container">
+      <div class="card" onclick="toggleDropdown(this)">
+        <h2>Streamlined Faculty Onboarding Experience</h2>
+        <div class="dropdown-content">
+          <p>
+            Optimize and accelerate every step of new‑hire integration with our
+            all‑in‑one HR Management System. Automate offer‑letter generation,
+            document collection, and orientation scheduling to deliver a
+            compliant, consistent, and truly professional onboarding journey.
+          </p>
+        </div>
+      </div>
+      <div class="card" onclick="toggleDropdown(this)">
+        <h2>Advanced Performance Monitoring & Feedback</h2>
+        <div class="dropdown-content">
+          <p>
+            Drive continuous growth and accountability with our integrated
+            performance management suite. Track key metrics in real time,
+            deliver rich 360° feedback, and foster goal alignment—all within a
+            single, intuitive platform designed for high‑impact teams.
+          </p>
+        </div>
+      </div>
+      <div class="card" onclick="toggleDropdown(this)">
+        <h2>Seamless Time & Attendance Automation</h2>
+        <div class="dropdown-content">
+          <p>
+            Eliminate manual timesheets and compliance risks with our automated
+            time‑capture engine. Monitor real‑time attendance, enforce schedule
+            policies, and integrate effortlessly with payroll—all from a single,
+            intuitive dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown(card) {
+        // close any other open card
+        document.querySelectorAll(".cards .card.active").forEach((c) => {
+          if (c !== card) c.classList.remove("active");
+        });
+        // toggle this one
+        card.classList.toggle("active");
+      }
+      // close dropdowns when clicking anywhere outside a card
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".card"))
+          document
+            .querySelectorAll(".cards .card.active")
+            .forEach((c) => c.classList.remove("active"));
+      });
+    </script>
+  </section>
+
+  <footer id="contact">
+    <div class="footer">
+      <p>© 2025 Human Resources Management, Inc. All rights reserved.</p>
+      <div class="social-icons">
+        <a
+          href="https://www.instagram.com/mr_us_man_147/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          href="https://github.com/usman-147"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/mohammedusman07"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+      </div>
+    </div>
+  </footer>
+  <!-- <p>Win Message: Always beleive in yourself, you can do it! and you will do it! and If you ever doubt the power of a single <section class="home-page"> again, remember this day</p> -->
+</section>
+{% endblock start %}
